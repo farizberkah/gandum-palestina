@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gandum untuk Palestina</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      color: #333;
+    }
+    header {
+      background: #b22222;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    .progress {
+      background: #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .progress-bar {
+      background: #b22222;
+      color: white;
+      padding: 0.5rem;
+      width: 35%;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #b22222;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .donation-info {
+      background: #f9f9f9;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-left: 5px solid #b22222;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gandum untuk Palestina</h1>
+    <p>Mari saling membantu saudara kita yang kekurangan pangan di Palestina.</p>
+  </header>
+
+  <div class="container">
+    <h2>Target Donasi: Rp 100.000.000</h2>
+    <div class="progress">
+      <div class="progress-bar">Rp 35.000.000 Terkumpul</div>
+    </div>
+
+    <form id="donationForm">
+      <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" required />
+      </div>
+
+      <div class="form-group">
+        <label for="nominal">Pilih Nominal</label>
+        <select id="nominal">
+          <option value="10000">Rp 10.000</option>
+          <option value="25000">Rp 25.000</option>
+          <option value="50000">Rp 50.000</option>
+          <option value="100000">Rp 100.000</option>
+          <option value="custom">Nominal Lain</option>
+        </select>
+        <input type="number" id="customNominal" placeholder="Masukkan nominal..." style="display:none;margin-top:0.5rem;" />
+      </div>
+
+      <div class="form-group">
+        <label for="pesan">Doa atau Pesan</label>
+        <textarea id="pesan" rows="3"></textarea>
+      </div>
+
+      <button type="submit">Donasi Sekarang</button>
+    </form>
+
+    <div class="donation-info" id="donationInfo" style="display:none">
+      <h3>Terima kasih atas niat baik Anda 🙏</h3>
+      <p>Silakan transfer ke rekening berikut:</p>
+      <p><strong>Bank BRI</strong><br/>No. Rekening: <strong>022801002777302</strong><br/>Atas Nama: <strong>CV. Fariz Berkah</strong></p>
+      <p>Setelah transfer, Anda bisa konfirmasi via WhatsApp.</p>
+    </div>
+  </div>
+
+  <script>
+    const nominalSelect = document.getElementById('nominal');
+    const customNominal = document.getElementById('customNominal');
+    nominalSelect.addEventListener('change', () => {
+      customNominal.style.display = nominalSelect.value === 'custom' ? 'block' : 'none';
+    });
+
+    const form = document.getElementById('donationForm');
+    const donationInfo = document.getElementById('donationInfo');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      donationInfo.style.display = 'block';
+      form.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
